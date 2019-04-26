@@ -1,0 +1,209 @@
+/*
+    bg: 0c120c
+    highlight
+*/
+:root{
+    --c-red: #500008;
+    --c-gray: #d1dddc;
+    --c-white: #f4f4f8;
+    --c-black: #050605;
+}
+
+body {
+    background-color: var(--c-black);
+    margin: 0px;
+}
+
+strong{
+    text-decoration: underline;
+}
+
+* {
+    color: var(--c-gray);
+}
+
+h1 {
+    font-size: 30pt;
+}
+h1,h2, h3, {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+h4, p, ul {
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+ul, p{
+    display: block;
+    width: fit-content;
+    margin: auto;
+}
+
+p {
+    padding: 15px 15px;
+}
+
+ul.noBullets {
+    list-style: none;
+}
+
+.darkText {
+    color: var(--c-black);
+}
+
+header{
+    width: 100%;
+    background-color: var(--c-white);
+    z-index: 2;
+    margin: 0;
+}
+
+header * {
+    margin: 0;
+    color: var(--c-black);
+}
+
+#contact {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+#contact * {
+    color: var(--c-black);
+}
+
+nav {
+    width: 100%;
+    bottom: 0%;
+    text-align: center;
+    background-color: var(--c-red);
+}
+
+nav a {
+    color: var(--c-gray);
+}
+
+a {
+    color: var(--c-gray);
+    padding: 10px;
+    font-weight: bold;
+    font-style: normal;
+    text-decoration: none;
+    font-size: 16pt;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+a:active {
+    color: var(--c-white);
+}
+
+
+.section {
+    width: 90%;
+    margin: 0 auto 50px;
+    border-top: double var(--c-red) 10px;
+    border-bottom: double var(--c-red) 10px;
+    border-radius: 20px;
+    padding: 20px 0;
+}
+
+.section.title {
+    height: 150px;
+    margin: 0 auto;
+    border-style: none;
+}
+
+.section h2,h3{
+    text-align: center;
+    margin: 20px none 10px;
+}
+
+.double {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+.triple {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.main {
+    min-height: 300px;
+}
+
+.main iframe{
+    margin: auto;
+    display: block;
+}
+
+img {
+    display: block;
+    max-height: 100%;
+    max-width: 100%;
+    margin: auto;
+}
+
+.downloadIcon {
+    display: block;
+    width: 100px;
+    margin: auto;
+}
+
+.fill {
+    width: 100%;
+    height: 100%;
+}
+
+.gameList{
+    display: grid;
+    width: 70vh;
+    height: 70vh;
+    justify-items: center;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    margin-top: 50px;
+    padding: 0 2vh;
+}
+
+.thumb {
+    height: 90%;
+    width: 90%;
+    margin:auto;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: auto 100%;
+    opacity: 0.4;
+    transition: opacity 0.5s, width 0.8s, height 0.8s;
+    transition-timing-function: ease;
+}
+
+.thumb a {
+    padding: 0;
+}
+
+.gameLink {
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    padding-top: 40%;
+    opacity: 0;
+    transition: opacity 0.5s;
+    color: var(--c-gray);
+    text-shadow: 2px 2px var(--c-red), -2px -2px var(--c-red);
+    text-decoration: none;
+    white-space: nowrap;
+}
+
+.thumb:hover {
+    height: 97%;
+    width: 97%;
+    opacity: 1;
+}
+.gameLink:hover {
+    opacity: 0.8;
+}

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>{{ page.title }}</title>
+        <link rel="stylesheet" href="/assets/style.css">
+    </head>
+    <body>
+        {%- include header.html -%}
+        <div class="title section">
+            <img src={{page.title_image}} >
+        </div>
+        <div class="main double section">
+            <div class="main_visual">
+               {%- if page.video -%}
+                   {{ page.video}}
+               {%- else -%}
+                    <img src={{page.main_img}}>
+               {%- endif -%}
+            </div>
+            <div>
+                <ul class="noBullets">
+                    <li>{{ page.type }}</li>
+                    <li><strong>Team:</strong> {{ page.team }}</li>
+                    <li><strong>Dev time:</strong> {{page.time}} ({{page.start}} - {{page.end}})</li>
+                    <li><strong>My role:</strong> {{page.role}}</li>
+                </ul>
+                <p>{{page.desc}}</p>
+            </div>
+        </div>
+        <div class="section triple">
+            <div>
+                <img src={{page.visual_1}}>
+            </div>
+            <div>
+                <h2>Programming and Design Tasks:</h2>
+                <ul>
+                    {% for item in page.tasks %}
+                        <li>{{ item }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+            <div>
+                <img src={{page.visual_2}}>
+            </div>
+            
+        </div>
+        <div class="section">
+            <h2>Postmortem</h2>
+            <div class="triple">
+                <div>
+                    <h3>Successes:</h3>
+                    <ul>
+                        {% for item in page.successes %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div>
+                    <h3>Challenges:</h3>
+                    <ul>
+                        {% for item in page.challenges %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div>
+                    <h3>Lessons Learned:</h3>
+                    <ul>
+                        {% for item in page.lessons %}
+                            <li>{{ item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            <h3>Full Postmortem:</h3>
+            <a href={{page.postMortemDoc}} download>
+                <img class="downloadIcon" src="/images/pdfIcon.png">
+              </a>
+        </div>
+        
+    </body>
+</html>
