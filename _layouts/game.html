@@ -8,14 +8,14 @@
     <body>
         {%- include header.html -%}
         <div class="title section">
-            <img src={{page.title_image}} >
+            <img src={{page.title_image}}>
         </div>
         <div class="main double section">
             <div class="main_visual">
                {%- if page.video -%}
                    {{ page.video}}
                {%- else -%}
-                    <img src={{page.main_img}}>
+                    <img class="visual" src={{page.main_img}}>
                {%- endif -%}
             </div>
             <div>
@@ -30,7 +30,7 @@
         </div>
         <div class="section triple">
             <div>
-                <img src={{page.visual_1}}>
+                <img class="visual" src={{page.visual_1}}>
             </div>
             <div>
                 <h2>Programming and Design Tasks:</h2>
@@ -41,7 +41,7 @@
                 </ul>
             </div>
             <div>
-                <img src={{page.visual_2}}>
+                <img class="visual" src={{page.visual_2}}>
             </div>
             
         </div>

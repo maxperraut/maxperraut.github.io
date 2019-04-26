@@ -117,6 +117,10 @@ a:active {
     border-style: none;
 }
 
+.title img {
+    box-shadow: 0 0 10px 5px var(--c-red);
+}
+
 .section h2,h3{
     text-align: center;
     margin: 20px none 10px;
@@ -146,6 +150,10 @@ img {
     max-height: 100%;
     max-width: 100%;
     margin: auto;
+}
+
+img.visual {
+    min-height: 250px;
 }
 
 .downloadIcon {
@@ -194,9 +202,16 @@ img {
     opacity: 0;
     transition: opacity 0.5s;
     color: var(--c-gray);
-    text-shadow: 2px 2px var(--c-red), -2px -2px var(--c-red);
-    text-decoration: none;
-    white-space: nowrap;
+    font-size: 18pt;
+    text-shadow: 2px 2px var(--c-red), -2px -1px var(--c-red);
+    text-decoration: underline var(--c-white);
+}
+
+.gameLink.light {
+    color: var(--c-black);
+    text-shadow: none;
+    font-size: 20pt;
+    text-decoration-color: var(--c-black);
 }
 
 .thumb:hover {
@@ -204,6 +219,6 @@ img {
     width: 97%;
     opacity: 1;
 }
-.gameLink:hover {
-    opacity: 0.8;
+.thumb:hover .gameLink {
+    opacity: 1;
 }
