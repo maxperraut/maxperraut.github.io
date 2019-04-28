@@ -103,7 +103,8 @@ a:active {
 
 
 .section {
-    width: 90%;
+    width: fit-content;
+    max-width: 90%;
     margin: 0 auto 50px;
     border-top: double var(--c-red) 10px;
     border-bottom: double var(--c-red) 10px;
