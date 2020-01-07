@@ -78,6 +78,7 @@ nav {
     bottom: 0%;
     text-align: center;
     background-color: var(--c-red);
+    font-size: 16pt;
 }
 
 nav a {
@@ -90,7 +91,6 @@ a {
     font-weight: bold;
     font-style: normal;
     text-decoration: none;
-    font-size: 16pt;
 }
 
 a:hover {
