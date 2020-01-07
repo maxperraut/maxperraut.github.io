@@ -73,10 +73,12 @@
                     </ul>
                 </div>
             </div>
-            <h3>Full Postmortem:</h3>
-            <a href={{page.postMortemDoc}} download>
-                <img class="downloadIcon" src="/images/pdfIcon.png">
-              </a>
+            {% if page.postMortemDoc %}
+                <h3>Full Postmortem:</h3>
+                <a href={{page.postMortemDoc}} download>
+                    <img class="downloadIcon" src="/images/pdfIcon.png">
+                </a>
+            {% endif %}
         </div>
         
     </body>
