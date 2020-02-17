@@ -46,3 +46,4 @@ url: "https://maxperraut.github.io"
 #   - vendor/ruby/
 
 theme:
+theme: jekyll-theme-slate
