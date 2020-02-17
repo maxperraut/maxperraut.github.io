@@ -1,0 +1,86 @@
+---
+layout: default
+title: "Foundations (2/16)"
+---
+<h1>Foundations - Sprint 1</h1>
+<p>
+    In this first sprint, the focus was on laying good foundations for
+    future developments. I worked to make sure the programmers were aware
+    of the Studio's development process and knew how to carry out their particular
+    roles. I also reviewed pull requests, lead the tools pod, and made contributions
+    to code for the player character.
+</p>
+
+<h2>Dispersing Information</h2>
+<p>
+    A major responsibility of the Programming Director is to provide information regarding the development process of the
+    studio. Every programmer should know their responsibilities and what standards they are expected to follow. The first step
+    in achieving this is creating documents that outline these expectations. This includes a C# style guide for Unity scripts,
+    and a guidelines document for using git and interacting with the project's repository.
+    I created such documents last semester so I was able to migrate them to our Confluence server. The formatting was mostly preserved
+    when copying from the google docs onto new Confluence pages, which was a pleasant surprise. Of course, documents such as these
+    are never perfect, so I made changes over the course of the sprint, such as adding extra clarification for points where programmers
+    were making mistakes, or adding details that I realized would be useful. The git guidelines doc saw a few major changes, such as
+    improved branch naming guidelines and the addition of links to specifically recommend learning material for git. When I saw multiple
+    programmers making similar mistakes, I would also make an announcement in the programming channel on the Studio discord server stressing
+    the points of difficulty and linking relevant documentation. The programming channel was also a location where I would directly answer programming-related
+    questions from studio members.
+</p>
+
+<h2>Code Review and Repository Management</h2>
+<p>
+    A second responsibility of the Programming Director is managing the project repository. This means preserving a clean organization of the project's files,
+    as well as ensuring code meets the Studio's standards as much as possible. One action I took on this front was defining the layout of the project's asset folder, shown below.
+</p>
+<img src="/images/blog/asset_org.png"/>
+<p>
+    An important part of this organization is the normal game assets from "_Development" assets, which are used for the <i>development</i> of the game, but not the game itself. One
+    example of a development asset is a TestScene, which demonstrates a feature/component fully setup and functional. This separation is helpful because it prevents confusion between
+    placeholder art, test scenes, temporary prefabs, and their intended-for-release counterparts.
+</p>
+<h3>Pull Request Review</h3>
+<img src="/images/blog/pull_requests.png"/>
+<p>
+    Along with the first sprint came the first pull requests. When looking at a pull request, my main concerns are the file changes, and the style of new code. For file changes,
+    I make sure that they all make sense for the purpose of the branch. The lack of git experience among the programming team combined with Unity's frequent automatic
+    fixes to files means I would often see changes in files unrelated to the branch's purpose. I'm confident that this will become less of an issue with as programmers gain experience over
+    the course of the project. A second common issue was the lack of header comments on scripts. A header comment, as described in the style guide, is a comment at the top of a script that
+    describes the scripts purpose and functionality. It is the one part of the style guide that I am the most strict on, as header comments are essential for me to quickly review code, and
+    they make it much easier for programmers to work with each other's scripts.
+ 
+</p>
+<h3>Strange LFS bug</h3>
+<p>
+    One particular issue I faced in the realm of version control was a strange bug with git. A few programmers had issues with git's large file system (LFS) not properly downloading large files when first
+    cloning the repository. Because .dll files are tracked with LFS, they could not even run the game in the editor due to compile errors. I investigated the issue on several affected machines, and figured
+    out a quick and effective way to fix it once it has happened. However, I was not able to narrow down exactly how it is caused in the first place. It seems to only affect users of the Windows Subsystem for Linux,
+    likely because git LFS is not installed properly. Luckily, it did not affect many programmers, so it was not a costly obstacle.
+</p>
+
+<h2>Tools Pod Management</h2>
+<p>
+    In addition to being Programming Director, I am the lead of the Tools pod. This pod is unique in that it is entirely made up of programmers. The responsibility of the tools pod is to create
+    scripts that assist in the development of the game, such as custom editor tools. Three members of this pod are also each a member of another pod, so for the first sprint I allowed them to focus on their other pod and get
+    a sense of their workload from that pod, since tasks of creating features for the game will generally take priority over tools.
+</p>
+
+<h3>Data Logging Developments</h3>
+<p>
+    One member of the pod felt he could tackle more work than he got from his other pod, so I tasked him with creating the foundations for a data logging and visualization system. This system will be used during playtesting to record
+    data about players' gameplay. This data will then be aggregated, visualized and analyzed to inform gameplay and level design decisions. I worked closely with this programmer to plan how the system would function and what capabilities
+    it should have. I am very excited about this tool in particular and I think it could be very useful in the development of this semester's game as well as future projects from the studio.
+</p>
+
+<h2>Player Input System</h2>
+<p>
+    I generally avoid assigning programming tasks to myself, due to my responsibilities outside of the Jira board, however one programming task that I did handle myself this sprint was the player input system. The reason I took an exception here
+    is that the integration of Unity's (relatively) new input system is quick but requires some background knowledge to set up. Technically, we were already using the new input system in the initial prototype, however we were not using the <i>full</i>
+    capabilities because the input to action mapping was still hardcoded, as shown below.
+</p>
+<img src="/images/blog/old_input.png" />
+<p>
+    By using the player input component provided by the Unity input system, inputs can be easily mapped and remapped in the editor without changing code. The primary challenge of this was modifying the player's character controller from a polling-based
+    input to work with the event-based approach of new player input component. Certain inputs needed to only be valid for the one frame in which they were started, so I had to communicate with the creator of the controller to determine which input had to be
+    cleared at the end of the update loop. This work was definitely worthwhile, given the ease of input mapping that it allows.
+</p>
+<img src="/images/blog/input_mapping.png"/>
