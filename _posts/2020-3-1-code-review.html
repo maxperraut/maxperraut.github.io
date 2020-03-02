@@ -1,0 +1,67 @@
+---
+layout: default
+title: "Code Review (3/31)"
+---
+<h1>Code Review - Sprint 2</h1>
+<p>
+    My focus this sprint was almost entirely reviewing the code submitted by the programmers. I wanted to make sure
+    any mistakes or misconceptions were caught early on before they became habits. I also wanted to find common problems
+    so I could adjust guidelines to address the mistakes that programmers would actually make, not just those that I expected
+    while initially defining the guidelines.
+</p>
+
+<h2>The Process</h2>
+<p>
+    The current configuration of the repository requires that I personally approve every pull request. I expected to remove this
+    restriction early on, however I have so far been able to keep up with the rate of new pull requests. I am only able to do this
+    by not examining the code itself very thoroughly. My main focuses while reviewing are as follows.
+    <ol>
+        <li>Do all the changes on the branch make sense? Do any of them appear to be unintentional?</li>
+        <li>Are there any merge conflicts, and can they be solved easily?</li>
+        <li>Do all the new scripts have a header comment at the top that describes the purpose of the scripts and the creator?</li>
+        <li>Do the new scripts make sense, each having a reasonable purpose? Should any be combined or split up?</li>
+    </ol>
+    The first two points above come from my role as manager of the repo. For the rest, my review of the code itself rarely goes deeper than the last point above.
+    In other words, I focus on the purpose and interface of each script, but
+    not the internal processes. As Programming Director this is what concerns me the most, because problems in interface and purpose are what propagate
+    through a code base and cause widespread issues if not kept in check. Issues with internal code are less dangerous. If some bugs make it into the 
+    development branch, they should reveal themselves in testing, and then it would come back to the creator of the script to resolve them. If such bugs
+    start to become too prolific, I will modify the code review process accordingly.
+</p>
+<p>
+    <a href="https://studio.eecs.umich.edu/bitbucket/projects/W20/repos/project-blue/pull-requests/58/overview">This pull request</a> is a good, recent example of code review for an important system.
+</p>
+<h2>Combating Unintentional Changes</h2>
+<p>
+    One major objective this sprint was to identify common problems, then adjust guidelines and spread information accordingly. The most common problem
+    by a large margin was git-related (as expected), and it was unintentionally-committed changes. These arose from Unity making automatic fixes, usually to
+    meta files. A complicating factor to this was git marking these changes as renames. Since most meta files are very similar, deleting one and creating another
+    is often marked as a rename by git. If both these changes are intentional, then this does not become a problem. However, if the deletion or creation is an automatic
+    change that was not intended, then a merge conflict can arise. This conflicts can be somewhat difficult to resolve, as they require an understanding of the assets/folders that
+    were created and deleted across conflicting branches. In the end, I would much rather avoid this happening entirely.
+</p>
+<p>
+    In response to the aforementioned issue, I added a section to the Git guidelines stresses the importance of verifying every change that one commits. I suspect that 
+    these changes are often missed through the use of "commit all" commands, so I recommend against anything that automatically adds all changes, instead suggesting manually
+    adding each change, consciously recognizing the purpose of each. I also made an announcement on the Studio discord reiterating these points, including the fact that 
+    "Unintentional changes and lack of header comments together encompass ~90% of the issues that come up in pull requests." To be honest, I think this is a bit of an exaggeration, 
+    but it effectively conveys the prevalence of the issue. Hopefully, future review will focus more on code design and less on git mistakes, but either way I will strive to
+    counteract whatever issues I see.
+</p>
+<h2>A Package Dependent on Git?</h2>
+<p>
+    This is a smaller issue, but an interesting one. There is a package in the project that updates using git. This can be seen in the package manifest file:
+    <img src="/images/blog/git-dependant-package.png"/>
+    I learned of this through a programmer that was getting errors from it, because they did not have git installed. (They use the Windows Subsystem for Linux,
+    so they only had git installed for Linux.) This causes an annoying pop-up when opening the project. Since most developers will have git installed for their
+    main operating system, this should only affect a relatively small subset of the Studio. I'm currently going with the plan to leave it as-is, but will likely
+    discuss this with other leads. We have to decide whether the importance of the tools provided by the package outweigh the annoyance of the pop-up.
+</p>
+<h2>Workflow Survey</h2>
+<p>
+    Aside from review code, I also created a survey for the programming team. Its purpose was two-fold. Firstly, I wanted to gauge if existing documents were actually being used,
+    and if they were effective. Secondly, I want to figure out what parts of the programming workflow are still unclear to programmers so I know where to focus future information, 
+    documentation, etc. The form can be accessed <a href="https://forms.gle/UX3uBaEnbqr1Qf83A">at this link.</a> It only has 16 responses at the time of writing, so I will make a 
+    second push for responses. Early results are good in terms of effectiveness/reach of existing documents, but I imagine that the sample of early responders is biased towards those
+    with more dedicated time, so a more complete sample may change the trend.
+</p>
