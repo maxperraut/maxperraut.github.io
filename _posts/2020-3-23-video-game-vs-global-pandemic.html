@@ -1,0 +1,65 @@
+---
+layout: default
+title: "Video Game vs Global Pandemic (3/23)"
+---
+<h1>Video Game vs Global Pandemic</h1>
+<p>
+    This post starts with the usual version-control discussion, representing the period of the project before it was affected by the global COVID-19 Pandemic. Then, I will discuss the major shifts that
+    occurred, both in the overall state of the team, and in my own personal focus for how I want to direct development moving forward.
+</p>
+
+<h2>Version Control - Progress and Challenges</h2>
+<p>
+    I mentioned in my last blog post that I took actions in response to common version control and programming mistakes that came
+    up frequently while reviewing pull requests. I'm happy to say that I've seen less of those mistakes since. Most recent pull requests
+    are able to go through without any major issues to correct. For the most part, it seems that programmers have learned from past mistakes
+    and from my communications, and the programming team is improving their skills overall. One of the main goals of this project is to be educational,
+    and I do believe we are achieving that purpose.
+</p>
+<p>
+    Of course, another main goal of the project is to produce a good game, and there are some cases where this goal conflicts with the educational purpose. One such case
+    came up recently. I found that a pod lead was committing and pushing code for one of their members, because that member was having issues with git. At first, I had a 
+    negative reaction to this, because I was worried that this member was missing out on a learning opportunity. Part of the reason I have the git/version control knowledge
+    that I have now is that I have solved many issues and broadened my knowledge by doing so. Then, upon discussing this with the pod lead, I realized that there are cases
+    where a particular feature needs to be implemented soon for the sake of the project, and that this member of the pod did intend to utilize git moving forward. This case 
+    was just an exception. In the end, leading a student project such as this becomes a bit of a balancing act. A lead must grant their members enough independence, so they
+    have opportunities to solve problems on their own, while also setting clear expectations and plans, intervening in cases where progress on the project must take precedence
+    over learning.
+</p>
+<p>
+    Another newly-developing challenge in version control is that there are more and more "non-technical" members of the studio who are starting to interact with the repository.
+    I am referring mainly to the art and audio departments. In the earlier time of the project, these departments focused more on concepts and iterating individual pieces, but now
+    they are starting to incorporate work into the actual build. This means they are using git to push their new art, animations, and audio. My approach to my own programming department
+    was very independently-focused. Many programmers already had version control experience, and a big part of being a programmer is learning to teach oneself from documentation and other
+    online resources, so I wanted to provide an opportunity to practice that by directing them to other resources, rather than feeding them every single thing they needed to know myself.
+    For non-technical members, they would not gain much value from a deep understanding of git, nor would they need strong skills in using it, since they would mostly just be adding and modifying
+    a few specific types of files. The approach to guiding them with version control would be very different. Luckily, the leads of these other departments were very helpful in this endeavor. Last
+    semester the audio director made a strong effort to familiarize himself with git, and for this project he has been able to disseminate that knowledge to the other audio members. The art director
+    is developing a tutorial video to guide artists through the fundamentals of committing their work. He has solid experience with creating instructional content, so I believe his video, 
+    supplemented with documents of my own, will provide artists with the basic knowledge to add their contributions without major issues.
+</p>
+
+<h2>The Effect of The Virus</h2>
+<p>
+    Obviously, nothing in the last few weeks has been more impactful on the course of the project than the COVID-19 pandemic. There's nothing quite like a global pandemic to add uncertainty and confusion
+    to a large team project. The one central effect this has on the project is the end of in-person meetings, and I do believe this represents a major blow to our productivity. I think back to last semester's
+    project, when, before major milestones, we could gather together round a big circle of tables and just crunch through our remaining tasks. Seeing people face-to-face has a huge psychological benefit, and
+    the loss of that means the morale of the team may suffer. The subject of morale has come up before Coronavirus, in two particular negative cases. First, the larger a team, the less ownership each person feels for 
+    the overall game, leading the less emotional investment. Second, a perceived lack of progress can hurt the motivation of members. The leads have worked hard to make progress visible to all members. With the Coronavirus
+    becoming a third major source of negative morale, we'll have to work even harder as leads to hold the team together and keep our spirits up.
+</p>
+<p>
+    On a more positive note, on the 23rd of March we had our first remote studio-wide meeting. Though technical difficulties prevented the main presentation from happening, I personally felt that our pod meetings were actually
+    rather productive. With a voice-chat room for each pod, I was able to easily quickly hop between pods and communicate with anyone I needed to, doing my check-ups and addressing everything that needed to be dealt with. Though
+    the true face-to-face interaction is lost, my productivity in a remote meeting is not affected quite as badly as I feared it would be.
+</p>
+<h2>Making a Real Game</h2>
+<p>
+    Connecting with the concept of team morale, I feel like a major source of the perceived lack of progress was the lack of an actual game. Though we had many people working on many things, they were spread out between repo branches,
+    and between testing scenes. There wasn't a central build of the game with an actual game flow, i.e. a main menu, intro cutscene, first level, etc. I had been aware of the problem for a while, but I focused on other tasks and didn't give
+    it enough thought to realize its importance. There was even a point were the game couldn't actually be built, because of some disorganization with editor scripts, and I didn't even notice until a programmer started working on
+    automated builds and brought it up to me. I finally turned my attention to this point when the animatics pod lead asked me to develop code to connect the cutscenes with loading game levels, so that the first level could be loaded
+    after the intro cutscene. I figured if I was doing that, I might was well connect the main menu too. While working on that I finally realized it was crazy that it had taken this long for the game build to become more than a small
+    test level. Moving forward, I will focus on bringing us back to a true Agile, iterative development, where progress is demonstrated centrally in the actual game, rather than progressing far too long in separate, parallel spaces. I hope
+    this will allow our true progress to show clearly, and raise the morale of our team.
+</p>
