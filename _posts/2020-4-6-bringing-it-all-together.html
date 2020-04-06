@@ -1,0 +1,91 @@
+---
+layout: default
+title: "Bringing It All Together (4/6)"
+---
+<h1>Bringing It All Together</h1>
+<p>
+    At the studio-wide digital meeting yesterday (April 5th) I was sitting in on the user interface pod meeting when the topic of programming meetings
+    came up. One person mentioned department-wide meetings and another responded that the Programming Department does not have dedicated meetings. Before
+    I gave my comment a programmer explained a meeting with all the programmers would not be very effective, as most programmers are able to focus within
+    their own pod. In terms of the coordination and consolidation that is needed, he described me as a "conduit" that united the programmers and brought the code together. Now, I have to give
+    proper credit and mention that some programmers have been working across pods where it was needed, and that has been quite helpful. With that, I did like this programmer's
+    wording of my role in the team, because I do believe the Programming Director's primary role in the studio should be to ensure that the many contributions of each member
+    are able to come together and fit like puzzle pieces. As the project nears it's final weeks of development, this role becomes more and more important, and indeed I did a lot of 
+    consolidation to bring together the beta release that was finished on April 5th.
+</p>
+
+<h2>Effective Version Control</h2>
+<p>
+    The use of version control, specifically git, is central to the goal of merging everyone's work, so I will start with some updates in this area.
+</p>
+<p>
+    A recent improvement to the configuration of our repository was a change to our merging method
+    for pull requests. Previously we were using 3-way merges, meaning the branch for a new feature would be merged with the main development
+    branch with a new commit. (That commit would have two parent commits, making it a 3-way commit.) This is essentially the default way of doing
+    merges, and it does accurately preserve the history of the project. However, with the 3-way merge strategy, the history of the development branch
+    was very complex and hard to follow, with many commits across all the different branches, and many merge commit between the development branch and
+    all the feature branches. To fix this issue, we changed to a squash merge strategy. This strategy merges feature branches by squashing all the commits
+    of the branch down into a single commit, and then puts that one commit onto the main development branch. This makes the development branch history
+    much easier to read through, as one can clearly see each single, major change that was merged in. The pictures below show what the visualization of
+    the development branch looked like before and after this change. (Note that we still use 3-way merges for certain situations.)
+    <div class="section">
+        <img src="/images/blog/ugly_history.png"/>
+    </div>
+    <div class="section">
+        <img src="/images/blog/clean_history.png"/>
+    </div>
+</p>
+<p>
+    Preparing for the beta release was an opportunity to make use of an important component of our git workflow, one which I had been neglecting
+    up to this point: the release branch. When preparing for a major release, one which should contain as few bugs as possible, we want to avoid
+    any major changes or new content, because these hold a  significant risk of introducing new errors to the build. At the same time, we I don't want
+    to completely stop any development that isn't part of polishing the beta release. This is where a release branch comes in. I created a new branch,
+    and only allowed small bugfixes and bits of polish on that branch, while the usual major iterations and additions could continue on the main development
+    branch. I will definitely make a recommendation to the next Programming Director to use release branches for every major version of the studio's future
+    games. This will also allow for longer periods of testing and polish, since they can go for any length of time without blocking the major iterative changes
+    on the main branch.
+</p>
+<p>
+    There was more discussion among the leads about how to empower the less-technical member of the studio (particularly Artists) to independently contribute to
+    the project repository. My perspective was actually changed by the conversation at first, but then a direct experience with the issue more or less flipped
+    my opinion back. First, a pod lead brought up that some non-programmers were making mistakes with meta files, and he wanted to make a studio-wide announcement
+    regarding it. Another lead suggested the need for more tutorials and guides. I responded by noting that meta files were actually covered by a section of my Git Guidelines document. 
+    However, I had only really promoted that document to programmers, so most non-programmers probably didn't know it existed. While contemplating this and writing a long message in the
+    leads chat channel, I made the (perhaps drastic) leap of suggesting that we stop treating programmers and non-programmers differently, and instead create one set of guides/tutorials
+    that everyone reads, and we expand and improve those docs based on feedback from all members. This had a strong appeal at first, with a feeling of positivity and efficiency.
+    After that conversation, I helped an artist who was having issues with git. They made a mistake while committing and I investigated and tried to salvage their work. I tried to explain 
+    what happened and hoped to impart some deeper git knowledge as I did this. However, I had major issues explaining version control because they lacked the knowledge about Unity and the
+    relation between the project in the editor and the actual files on the computer. This experience taught me the real reason why version control is difficult to learn and use confidently.
+    I don't believe version control tools such as git are particularly complex on their own, but rather effectively using version control requires a large foundation of understanding. One must understand
+    the project they are working on, Unity or otherwise, and they must understand the tools they are using and how they actually affect the files on their computer. This technical background knowledge
+    is something that can generally be assumed for programmers, but not so much for others. In the end, I believe the only practical approach for contributors of a non-technical background is
+    to give them a clear, step-by-step guide, and if they make a mistake then someone with the technical knowledge must step in to help. A game development team in which all the artist are also programmers
+    is a pleasant dream, but of course far from realistic.
+</p>
+
+<h2>Polishing the Beta</h2>
+<p>
+    While fixing up for the Beta release, I was able to use some lessons from last semester to fix a few issues. For example, last semester I handled
+    the input for menus myself, so I was able to pass that knowledge to a UI pod programmer. I helped him make use the the UI Input Module, which handles
+    input completely separately from the player input, and also works in a somewhat cryptic way. UI input events are only ever sent to whatever single
+    element is currently selected, and I have still never found a way to globally listen to UI inputs, such as for a pause input that should work regardless
+    of what button is selected. In this issue we took the same approach as last semester and just treated pausing as a game input on the player, rather than a UI
+    input. Another UI issue we encountered last semester was that clicking outside of a button on a menu would cause the game to select nothing, and then the user
+    could no longer use directional inputs in the menu. This semester I fixed this issue by updating the input system package, which simply adds a toggle to turn off
+    this <span style="text-decoration: line-through;">bug</span> feature.
+    <img src="/images/blog/deselect_toggle.png"/>
+    Another issue from last semester that repeated was the stopping of audio on player death. Our audio subsystem, Wwise, organizes audio into sound banks.
+    Before a sound can play, the sound bank holding that sound must be loaded. When the player dies, the scene is reloaded, meaning the sound banks for that scene are unloaded,
+    then reloaded, in the same frame. This causes a conflict and the banks just stay unloaded, leading to the lack of sound. Last semester, I spent a good amount of time digging
+    through Wwise code to try and prevent this from happening, but it seems fundamentally Wwise cannot separate actions that occur in the same frame calculation. The fix, though it 
+    feels like a bit of a hack more than a real solution, is to simply delay the loading of sound banks by a single frame after the scene is loaded.
+</p>
+<p>
+    As I was knocking off the very last things before making the final beta build, I became anxious about every little change made, double or triple checking that they couldn't
+    possibly cause major issues. I puzzled over whether modifying the position of the health bar could somehow break the game. This anxiety continued even after I fixed the final bug,
+    because that final error was technically a game-breaking one, and also illustrated the important difference between playtesting and real QA. It was a simple problem where the
+    manager of player checkpoints had the wrong default spawn point, set to the last spawn point instead of the first one. If the player died before reaching the first checkpoint, they would
+    respawn far into the level and the camera couldn't follow them, so they would have to restart. It's quite possible that this bug has existed for a long time, and simply evaded detection
+    since it's very unlikely for a playtester to die so early into the game. If everyone testing the game is acting like a normal player, then certain kinds of fatal but uncommon bugs can
+    easily slip through. I will likely try to assign some dedicated QA testers once we get to the final stretch of development.
+</p>
